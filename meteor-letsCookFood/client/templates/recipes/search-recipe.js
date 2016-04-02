@@ -22,9 +22,30 @@ Template.recipes.rendered = function(){
       }
    });
 };
+
 Template.recipes.events({
    'click #submit-query': function(e){
-      endpoint="https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?" + $("form").serialize() + "&mashape-key=pzNnTT0Geimshk4zTvFtsrAINqiHp1YEhgojsnngmYNQaIZoom"
-   console.log(endpoint);
-   }
+      endpoint=$("form").serialize();
+     function getRecipeJson() {
+         var apiKey = "pzNnTT0Geimshk4zTvFtsrAINqiHp1YEhgojsnngmYNQaIZoom";
+         var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?" + endpoint + "&mashape-key=" + apiKey;
+         console.log(url);
+         $.ajax({
+             type: "GET",
+             dataType: 'json',
+             cache: false,
+             url: url,
+             success: function (data) {
+               console.log(data);
+               $.each(data.results, function(index, value)
+               {
+                  $("#recipe-results").append('<div><h4 class="recipe-link">' + value.title + '</h4><img src="' + value.image + '"</img></div>');
+               });
+             }
+         });
+     }
+      getRecipeJson();
+      }
+
 });
+
