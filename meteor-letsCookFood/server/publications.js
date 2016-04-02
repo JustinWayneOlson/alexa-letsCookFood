@@ -1,3 +1,3 @@
-Meteor.publish('shopping-list', function(){
-   return shopping-list.find({userId: this.userId});
+Meteor.publish('shoppingList', function(){
+   return ShoppingList.find({userId: this.userId});
 });
