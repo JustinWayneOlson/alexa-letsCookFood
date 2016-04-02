@@ -5,3 +5,4 @@ Router.configure({
 });
 
 Router.route('/', {name: 'landingPage'});
+Router.route('/searchRecipes', {name:'searchRecipe'});

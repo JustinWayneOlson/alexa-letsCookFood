@@ -1,4 +1,4 @@
-Template.landingPage.rendered = function() {
+Template.searchRecipe.rendered = function() {
   function getRecipeJson() {
       var apiKey = "72wOanSqYlM4R6EgFAgS229UX0yx4fc9";
       var recipeId = 196149;
