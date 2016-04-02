@@ -1,0 +1,56 @@
+[
+   {
+      "name":"Cuisine",
+      "value":"cuisine",
+      "description":"cuisine",
+      "options":[
+         "african",
+         "chinese",
+         "japanese",
+         "korean",
+         "vietnamese",
+         "thai",
+         "indian",
+         "british",
+         "irish",
+         "french",
+         "italian",
+         "mexican",
+         "spanish",
+         "middle eastern",
+         "jewish",
+         "american",
+         "cajun",
+         "southern",
+         "greek",
+         "german",
+         "nordic",
+         "eastern european",
+         "caribbean",
+         "latin american"
+      ],
+      "format":"string"
+   },
+   {
+      "name":"Diet",
+      "value":"diet",
+      "description":"Specific Diet",
+      "option":[
+         "pescetarian",
+         "lacto vegetarian",
+         "ovo vegetarian",
+         "vegan",
+         "paleo",
+         "primal",
+         "vegetarian"
+      ],
+      "format":"string"
+   },
+   {
+      "name":"Exclude Ingredients",
+      "value":"excludeIngredients",
+      "description":"Exclude Ingredients",
+      "option":"none",
+      "format":"string"
+   }
+]
