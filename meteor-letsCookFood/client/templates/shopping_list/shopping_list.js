@@ -1,6 +1,6 @@
 Template.shoppingList.helpers({
   listItem: function() {
-    return ShoppingList.find({envId: this._id});
+    return ShoppingList.find();
   }
 });
 

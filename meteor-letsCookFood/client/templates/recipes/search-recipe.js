@@ -45,7 +45,7 @@ Template.recipes.events({
                {
                   recipe_title=value.title;
                   recipe_title=recipe_title.replace(/\s+/g, '-').toLowerCase();
-                  $("#recipe-results").append('<div><h4">' + value.title + '</h4><div class="recipe-link" id="' + recipe_title + '"> <img src="' + value.image + '"></img></div></div>');
+                  $("#recipe-results").append('<div class="container-fluid"><h4">' + value.title + '<h4> <img src="' + value.image + '"></img><button class="recipe-link btn btn-success" id="' + recipe_title + '">View Full Recipe</button></div>');
                });
                $(".recipe-link").click(function(){
                   recipe_details=$(this).attr("id");
