@@ -23,11 +23,7 @@ Template.recipes.rendered = function(){
          $("#query-parameters").append('<div value="' + $(this).attr("value") + '" class="row"><h4>' + $(this).text() + '</h4><input name="' + $(this).attr("id") + '" type="text"> ' + query_results[$(this).attr("value")].format + '</div>');
          }
       });
-
-
-
    });
-
 }
    function getRecipeJson() {
       var apiKey = "pzNnTT0Geimshk4zTvFtsrAINqiHp1YEhgojsnngmYNQaIZoom";
