@@ -22,3 +22,4 @@ standard-minifier-js
 ian:accounts-ui-bootstrap-3
 iron:router
 accounts-password
+zimme:active-route
