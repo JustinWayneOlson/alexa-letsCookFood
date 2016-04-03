@@ -28,7 +28,7 @@ Router.route('/letsCook', {
    data: function() { return PantryList.find();}
 });
 
-Router.route('/recipes/:_recepeName', {
+Router.route('/recipes/:_recipeId', {
    name:'viewRecipe',
    data: function() { return RecipeList.find(); }
 });

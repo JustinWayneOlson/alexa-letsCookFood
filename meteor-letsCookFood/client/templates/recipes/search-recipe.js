@@ -23,15 +23,9 @@ Template.recipes.rendered = function(){
          $("#query-parameters").append('<div value="' + $(this).attr("value") + '" class="row"><h4>' + $(this).text() + '</h4><input name="' + $(this).attr("id") + '" type="text"> ' + query_results[$(this).attr("value")].format + '</div>');
          }
       });
-      $("#add-favorite").click(function(){
-         var recipe = {
-            "name":$(this).attr("name"),
-            "id":$(this).attr("id")
-         };
-         Meteor.call('recipeListInsert', recipe, function(error, results){
-            return 0;
-         });
-      });
+
+
+
    });
 
 }
@@ -45,7 +39,6 @@ Template.recipes.rendered = function(){
          cache: false,
          url: url,
          success: function (data) {
-            console.log("penis");
             console.log(data);
             $.each(data.results, function(index, value)
             {
@@ -53,6 +46,19 @@ Template.recipes.rendered = function(){
                recipe_title=value.title;
                recipe_title=recipe_title.replace(/\s+/g, '-').toLowerCase();
                $("#recipe-results").append('<div class="container-fluid"><h3>' + value.title + '</h3> <img src="' + value.image + '"></img><button name="' + recipe_title + '" class="recipe-link btn btn-success" id="' + recipe_id + '">View Full Recipe</button><button class="btn btn-info" id="add-favorite">Add To Favorites</button></div>');
+            });
+            $(".recipe-link").click(function(){
+                var recipe_id = $(this).attr("id");
+                Router.go('viewRecipe', {_recipeId:recipe_id});
+            });
+            $("#add-favorite").click(function(){
+               var recipe = {
+                  "name":$(this).attr("name"),
+                  "id":$(this).attr("id")
+               };
+               Meteor.call('recipeListInsert', recipe, function(error, results){
+                  return 0;
+               });
             });
             /*$(".recipe-link").click(function(){
                recipe_information=$(this).attr("id");
@@ -74,11 +80,17 @@ Template.recipes.rendered = function(){
             });*/
          }
       });
+
    }
 Template.recipes.events({
    'click #submit-query': function(e){
       endpoint=$("form").serialize();
       getRecipeJson();
+   },
+
+   'click .recipe-link': function(e){
+     $(".recipe-link").click(function(){
+         console.log($(this).attr("id"));
+     });
    }
 });
-
