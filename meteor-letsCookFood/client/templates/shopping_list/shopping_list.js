@@ -21,7 +21,7 @@ Template.shoppingList.events({
  },
    'click .moveAllToPantry': function(e) {
       $.each(ShoppingList.find().fetch(), function(index,value){
-         Meteor.call('pantryListInsert', this._id , function(error, result) {
+         Meteor.call('pantryListInsert', value , function(error, result) {
             return 0;
          });
          Meteor.call('shoppingListDelete', this._id, function(error, result) {
