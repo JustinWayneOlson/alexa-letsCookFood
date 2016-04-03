@@ -2,7 +2,7 @@
    <div id="container" class="container-fluid top-spacer card">
       <h3>
       Your Pantry
-      <button type="button" class="btn btn-success listAdd">+/-</button>
+      <button type="button" class="btn btn-success pantrylistAdd">+</button>
       </h3>
    </div>
 
@@ -11,12 +11,13 @@
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h4 class="modal-title">Add Food Items in a Comma Separated List</h4>
-         <p>ie. 3oz pulled pork, 4 cans of chicken noodle soup, 6 apples</p>
+         <h4 class="modal-title">Your Pantry</h4>
+         </div>
          <div class="modal-body">
          <div class="control">
-            <input name="name" type="text" value="" id="add_to_pantry" class="form-control"/><br>
+            <input name="name" type="text" value="" id="name" placeholder="Name"  class="form-control"/><br>
          </div>
+            <input name="amount" type="text" value="" id="amount" placeholder="amount"  class="form-control"/><br>
         </div>
         <div class="modal-footer" onKeyPress="return checkSubmit(event)">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -25,5 +26,27 @@
          </div>
       </div>
     </div>
+     <div id="container" class="container-fluid top-spacer card">
+    <table class="table table-hover table-striped table-sm ftable">
+      <thead>
+        <tr class="ftable_head">
+          <td>#</td>
+          <td>Name</td>
+          <td>Amount</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pantrylistItem}}
+          <tr>
+            <td>{{emptyChild}}</td>
+            <td>{{name}}</td>
+            <td>{{amount}}</td>
+            <td><button type="button" class="btn btn-xs btn-danger deleteItem">Remove</button></td>
+            <td><button type="button" class="btn btn-xs btn-danger addToShoppingCart">Shopping Cart</button></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </template>

@@ -13,7 +13,8 @@ Meteor.methods({
          _id: pantryListId
       };
    },
-   pantryListDelete: function (args) { PantryList.remove({
+   pantryListDelete: function (args) {
+      PantryList.remove({
       _id: args
    })
    }

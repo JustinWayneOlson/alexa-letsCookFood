@@ -2,10 +2,10 @@
   <div id="container" class="container-fluid top-spacer card">
     <h3>
       Shopping List
-       <button type="button" class="btn btn-success listAdd">+</button>
+       <button type="button" class="btn btn-success shoppinglistAdd">+</button>
        <button type="button" class="btn btn-success downloadShoppingList">Download</button>
        <button type="button" class="btn btn-success copyToClipboard">Copy to Clipboard</button>
-       <button type="button" class="btn btn-success moveAllToPantry">Add all to Pantry></button>
+       <button type="button" class="btn btn-success moveAllToPantry">Add all to Pantry</button>
     </h3>
   </div>
   <div class="modal fade" id="createListAddPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -13,18 +13,17 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Subject Information</h4>
+          <h4 class="modal-title">Shopping Cart</h4>
         </div>
         <div class="modal-body">
           <div class="control">
             <input name="name" type="text" value="" id="name" placeholder="Name" class="form-control"/><br>
-            <input name="quantity" type="text" value="" id="quantity" placeholder="Quantity" class="form-control"/><br>
-            <input name="notes" type="text" value="" id="notes" placeholder="Notes" class="form-control"/><br>
           </div>
+            <input name="amount" type="text" value="" id="amount" placeholder="amount" class="form-control"/><br>
         </div>
         <div class="modal-footer" onKeyPress="return checkSubmit(event)">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="save">Add</button>
+          <button type="button" class="btn btn-primary" id="save">Finish</button>
         </div>
       </div>
     </div>
@@ -34,19 +33,17 @@
       <thead>
         <tr class="ftable_head">
           <td>#</td>
-          <td>name</td>
-          <td>Quantity</td>
-          <td>Notes</td>
+          <td>Name</td>
+          <td>Amount</td>
           <td></td>
         </tr>
       </thead>
       <tbody>
-        {{#each listItem}}
+        {{#each shoppinglistItem}}
           <tr>
             <td>{{emptyChild}}</td>
             <td>{{name}}</td>
-            <td>{{quantity}}</td>
-            <td>{{notes}}</td>
+            <td>{{amount}}</td>
             <td><button type="button" class="btn btn-xs btn-danger deleteItem">Remove</button></td>
             <td><button type="button" class="btn btn-xs btn-danger moveItemToPantry">Pantry</button></td>
           </tr>

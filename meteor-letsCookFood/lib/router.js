@@ -1,16 +1,16 @@
 Router.configure({
   layoutTemplate: 'layout',
   loadingTemplate: 'loading',
-  notFoundTemplate: 'notFound',
-  waitOn: function() {
-    return Meteor.subscribe('shoppingList')
-    }
-});
+  notFoundTemplate: 'notFound'});
 
 Router.route('/', {name: 'landingPage'});
 Router.route('/pantryList', {
    name:'pantryList',
-   data: function() { return PantryList.find();}
+   data: function() { return PantryList.find();},
+  waitOn: function() {
+    return Meteor.subscribe('pantryList');
+    }
+
 });
 
 Router.route('/recipes', {
@@ -20,7 +20,11 @@ Router.route('/recipes', {
 
 Router.route('/shoppingList', {
    name:'shoppingList',
-   data: function() { return ShoppingList.find();}
+   data: function() { return ShoppingList.find();},
+  waitOn: function() {
+    return Meteor.subscribe('shoppingList');
+    }
+
 });
 
 Router.route('/letsCook', {
@@ -31,12 +35,4 @@ Router.route('/letsCook', {
 Router.route('/recipes/:_recipeId', {
    name:'viewRecipe',
    data: function() { return RecipeList.find(); }
-});
-
-Router.route('/endpoints/static.json', {
-   name:'staticEndpoint'
-});
-
-Router.route('/api-key', {
-   name:'apiKey'
 });
