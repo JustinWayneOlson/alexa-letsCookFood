@@ -32,3 +32,11 @@ Router.route('/recipes/:_recipeId', {
    name:'viewRecipe',
    data: function() { return RecipeList.find(); }
 });
+
+Router.route('/endpoints/static.json', {
+   name:'staticEndpoint'
+});
+
+Router.route('/api-key', {
+   name:'apiKey'
+});

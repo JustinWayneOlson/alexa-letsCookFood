@@ -47,33 +47,6 @@ Template.recipes.rendered = function(){
                 var recipe_id = $(this).attr("id");
                 Router.go('viewRecipe', {_recipeId:recipe_id});
             });
-            $("#add-favorite").click(function(){
-               var recipe = {
-                  "name":$(this).attr("name"),
-                  "id":$(this).attr("id")
-               };
-               Meteor.call('recipeListInsert', recipe, function(error, results){
-                  return 0;
-               });
-            });
-            /*$(".recipe-link").click(function(){
-               recipe_information=$(this).attr("id");
-               var recipe_url="https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=http%3A%2F%2Fwww.melskitchencafe.com%2F" + recipe_endpoint + "%2F&mashape-key=" + apiKey;
-               console.log(recipe_url);
-               $.ajax({
-                  type: "GET",
-                  dataType: 'json',
-                  cache: false,
-                  url: recipe_url,
-                  success: function (data)
-                  {
-                     recipe_conent=data;
-                     console.log(data);
-                  }
-
-               });
-
-            });*/
          }
       });
 
