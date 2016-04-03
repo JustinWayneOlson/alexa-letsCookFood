@@ -1,7 +1,11 @@
 <template name="shoppingList">
   <div id="container" class="container-fluid top-spacer card">
     <h3>
-       Shopping List <button type="button" class="btn btn-success listAdd">+</button>
+      Shopping List
+       <button type="button" class="btn btn-success listAdd">+</button>
+       <button type="button" class="btn btn-success downloadShoppingList">Download</button>
+       <button type="button" class="btn btn-success copyToClipboard">Copy to Clipboard</button>
+       <button type="button" class="btn btn-success moveAllToPantry">Add all to Pantry></button>
     </h3>
   </div>
   <div class="modal fade" id="createListAddPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -43,7 +47,8 @@
             <td>{{name}}</td>
             <td>{{quantity}}</td>
             <td>{{notes}}</td>
-            <td><button type="button" class="btn btn-xs btn-danger deleteItem">X</button></td>
+            <td><button type="button" class="btn btn-xs btn-danger deleteItem">Remove</button></td>
+            <td><button type="button" class="btn btn-xs btn-danger moveItemToPantry">Pantry</button></td>
           </tr>
         {{/each}}
       </tbody>

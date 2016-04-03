@@ -1,3 +1,28 @@
-<template name="pantry">
+<template name="pantryList">
+   <div id="container" class="container-fluid top-spacer card">
+      <h3>
+      Your Pantry
+      <button type="button" class="btn btn-success listAdd">+/-</button>
+      </h3>
+   </div>
 
+   <div class="modal fade" id="createListAddPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title">Subject Information</h4>
+         <div class="modal-body">
+         <div class="control">
+            <input name="name" type="text" value="" id="add_to_pantry" placeholder="pantry_data" class="form-control"/><br>
+         </div>
+        </div>
+        <div class="modal-footer" onKeyPress="return checkSubmit(event)">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save">Finish</button>
+        </div>
+         </div>
+      </div>
+    </div>
+  </div>
 </template>
