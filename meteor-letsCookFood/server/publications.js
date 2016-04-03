@@ -9,7 +9,3 @@ Meteor.publish('pantryList', function(){
 Meteor.publish('recipeList', function(){
    return RecipeList.find({userId: this.userId});
 });
-
-Meteor.publish('ingredients', function(){
-   return Ingredients.find({userId: this.userId});
-});

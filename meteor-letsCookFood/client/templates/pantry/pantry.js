@@ -1,45 +1,45 @@
 Template.pantryList.helpers({
-   listItem: function() {
+   pantrylistItem: function() {
       return PantryList.find();
    }
 });
+Template.pantryList.helpers({
+   shoppinglistItem: function() {
+      return ShoppingList.find();
+   }
+});
+
 Template.pantryList.events({
-      'click .listAdd': function(e) {
+      'click .pantrylistAdd': function(e) {
          $('#createListAddPopup').modal({
             keyboard: true,
             show: true
          });
          $('#createListAddPopup').on('shown.bs.modal', function (){
-            $('#add_to_pantry').focus();
+            $('#name').focus();
          })
       },
-   'click #save': function(e) {
-      var data_to_parse = $('#add_to_pantry').val();
-      var array_to_parse = data_to_parse.split(",");
-      var pantry_ingredients=[];
-        $.each(array_to_parse, function(index, value){
-      var ajax= $.ajax({
-                url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
-                type: 'POST', // The HTTP Method, can be GET POST PUT DELETE etc
-                data: {'ingredientList':value, "servings":"2"}, // Additional parameters here
-                dataType: 'JSON',
-                success: function(data) { console.log((data.source)); },
-                error: function(err) { console.log(err); },
-                beforeSend: function(xhr) {
-                xhr.setRequestHeader("X-Mashape-Authorization", "DVIsMTrR1PmshMNnKC5T7v9XqFbZp1jPadwjsnQMMeyTlkY0pJ");
-             }
-            });
-         pantry_ingredients.push(ajax);
-         });
-        console.log(pantry_ingredients);
-      if(pantry_ingredients){
-         Meteor.call('pantryListInsert', pantry_ingredients, function(error, result){
+   'click .addToShoppingCart': function(e) {
+         Meteor.call('shoppingListInsert', this._id, function(error, result){
             return 0;
          });
-      }
-      $('#createListAddPopup').modal('hide');
-      $('#add_to_pantry').val('');
+
+         Meteor.call('pantryListDelete', this._id, function(error, result){
+            return 0;
+         });
    },
+   'click #save': function(e) {
+      var pantrylistItem = {
+            name: $('#name').val(),
+            amount: $('#amount').val(),
+         };
+         Meteor.call('pantryListInsert', pantrylistItem, function(error, result){
+            return 0;
+         });
+      $('#createListAddPopup').modal('hide');
+      $('#name').val('');
+      $('#amount').val('');
+      },
       'click .deleteItem': function(e) {
          Meteor.call('pantryListDelete', this._id, function(error, result){
             return 0;

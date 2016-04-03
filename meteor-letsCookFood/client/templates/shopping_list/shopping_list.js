@@ -1,16 +1,16 @@
 Template.shoppingList.helpers({
-  listItem: function() {
+  shoppinglistItem: function() {
     return ShoppingList.find();
   }
 });
 Template.shoppingList.helpers({
-  listItem: function() {
+  pantrylistItem: function() {
     return PantryList.find();
   }
 });
 
 Template.shoppingList.events({
-  'click .listAdd': function(e) {
+  'click .shoppinglistAdd': function(e) {
    $('#createListAddPopup').modal({
      keyboard: true,
      show: true
@@ -21,7 +21,7 @@ Template.shoppingList.events({
  },
    'click .moveAllToPantry': function(e) {
       $.each(ShoppingList.find().fetch(), function(index,value){
-         Meteor.call('pantryListInsert', value, function(error, result) {
+         Meteor.call('pantryListInsert', value , function(error, result) {
             return 0;
          });
          Meteor.call('shoppingListDelete', this._id, function(error, result) {
@@ -30,18 +30,16 @@ Template.shoppingList.events({
       });
    },
   'click #save': function(e) {
-   var listItem = {
+   var shoppinglistItem = {
      name: $('#name').val(),
-     amount: $('#quantity').val(),
-     notes: $('#notes').val()
+     amount: $('#amount').val(),
    };
-   Meteor.call('shoppingListInsert', listItem, function(error, result) {
+   Meteor.call('shoppingListInsert', shoppinglistItem, function(error, result) {
      return 0;
    });
       $('#createListAddPopup').modal('hide');
       $('#name').val('');
-      $('#quantity').val('');
-      $('#notes').val('');
+      $('#amount').val('');
  },
  'click .deleteItem': function(e) {
    Meteor.call('shoppingListDelete', this._id, function(error, result) {
