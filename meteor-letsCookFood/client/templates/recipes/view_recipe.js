@@ -56,9 +56,7 @@ Template.viewRecipe.rendered = function()
                      });
                   });
                }
-
          });
       }
    });
 }
-
